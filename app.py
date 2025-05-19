@@ -37,5 +37,9 @@ def predict():
     except Exception as e:
         return jsonify({"error": f"❌ خطأ داخلي: {str(e)}"}), 500
 
+import os
+
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=10000)
+    port = int(os.environ.get("PORT", 10000))  # Render يعطي PORT ديناميكي
+    app.run(host='0.0.0.0', port=port)
+
